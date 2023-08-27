@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facebook Homepage</title>
+  <link rel="stylesheet" href="/css/homepage.css" />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+</head>
+<body>
+<header>
+  <!-- Facebook logo and search bar -->
+  <div class="logo">
+    <img src="/images/facebook.png" alt="" class="logo-img" />
+  </div>
+  <div class="menu">
+    <input type="text" class="search" placeholder="Search" />
+    <!-- Navigation links -->
+    <nav class="pry-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Friends</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Notifications</a></li>
+      </ul>
+    </nav>
+    <div class="sec-menu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- User profile picture and cover photo -->
+  <h1>Welcome: <span th:text="${userLogin}"></span></h1>
+  <div class="profile">
+    <img
+            src="/images/P27258-Donald-Knuth.jpeg"
+            alt="User Profile Picture"
+    />
+  </div>
+
+  <!-- Create Post section -->
+  <div class="create-post">
+    <textarea placeholder="What's on your mind?"></textarea>
+    <button class="post-btn" onclick="displayComment()">Post</button>
+  </div>
+
+  <!-- Posts Feed -->
+  <div class="feed">
+    <!-- Sample Post -->
+    <div class="post">
+      <div class="user-info">
+        <img
+                src="./images/mattdyke_AF_1280-20180328113114139.jpeg"
+                alt="Friend 1 Profile Picture"
+        />
+        <span class="user-name">Jimmy Fowler</span>
+        <span class="post-time">2 hours ago</span>
+      </div>
+      <p class="post-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget
+        nunc a arcu faucibus tristique. Pellentesque ac mollis enim. Cras
+        hendrerit ante eu posuere faucibus.
+      </p>
+      <div class="post-actions">
+        <button class="like-btn">
+          Like <i class="fa-solid fa-thumbs-up"></i>
+        </button>
+        <button class="comment-btn">
+          Comment <i class="fa-solid fa-comments"></i>
+        </button>
+        <span class="like-count">10 Likes</span>
+        <span class="comment-count">5 Comments</span>
+      </div>
+      <!-- Comments Section -->
+      <div class="comments">
+        <!-- Sample Comment -->
+        <div class="comment">
+          <img
+                  src="./images/P27258-Donald-Knuth.jpeg"
+                  alt="Friend 2 Profile Picture"
+          />
+          <span class="user-name">Donald Knuth:</span>
+          <span class="comment-text">I agree! 🙌</span>
+        </div>
+        <!-- Add more comments here... -->
+      </div>
+    </div>
+    <!-- Add more posts here... -->
+  </div>
+</main>
+
+<footer>
+  <!-- Footer links -->
+  <ul>
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Service</a></li>
+    <li><a href="#">Help Center</a></li>
+  </ul>
+</footer>
+<script>
+  function displayComment() {
+    const commentInput = document.getElementById("comment").value;
+    const commentDisplay = document.createElement("p");
+    commentDisplay.textContent = commentInput;
+
+    const displayContainer = document.getElementById("displayedComment");
+    const existingComments = displayContainer.innerHTML;
+
+    if (existingComments !== "") {
+      displayContainer.innerHTML += "<br>";
+    }
+
+    displayContainer.appendChild(commentDisplay);
+    document.getElementById("comment").value = "";
+  }
+</script>
+</body>
+</html>
